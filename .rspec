@@ -1,0 +1,4 @@
+--format Fuubar
+--color
+--require rails_helper
+--tag ~js
