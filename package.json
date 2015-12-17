@@ -1,0 +1,16 @@
+{
+  "name": "upwork_test",
+  "version": "1.0.0",
+  "author": "K-S-A",
+  "license": "ISC",
+  "dependencies": {
+    "bower": "~1.5.3"
+  },
+  "engine": {
+    "node": "5.0.0",
+    "npm": "3.3.6"
+  },
+  "scripts": {
+    "postinstall": "./node_modules/bower/bin/bower install"
+  }
+}
