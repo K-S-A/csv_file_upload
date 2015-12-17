@@ -1,0 +1,19 @@
+.input-group.form-group{'show-validation': true}
+  %label{for: "email"} E-mail:
+  %input#email.form-control{name: "email", type: "email", placeholder: "Email", required: true,
+  data: {ng_model: "vm.user.email",
+         ng_pattern: "vm.email_regexp"}}/
+  %p.text-danger{data: {ng_show: "!loginForm.email.$viewValue && loginForm.email.$dirty"}}
+    E-mail is required.
+  %p.text-danger{data: {ng_show: "loginForm.email.$invalid && loginForm.email.$dirty"}}
+    Please enter correct e-mail.
+.input-group.form-group{'show-validation': true}
+  %label{for: "password"} Password:
+  %input#password.form-control{name: "password", type: "password", placeholder: "Password", required: true,
+  data: {ng: {maxlength: "72", minlength: "8", model: "vm.user.password"}}}/
+  %p.text-danger{data: {ng_show: "!loginForm.password.$viewValue && loginForm.password.$dirty"}}
+    Password is required.
+  %p.text-danger{data: {ng_show: "loginForm.password.$error.minlength && loginForm.password.$dirty"}}
+    Password must be at least 8 characters.
+  %p.text-danger{data: {ng_show: "loginForm.password.$error.maxlength && loginForm.password.$dirty"}}
+    Maximum password length is 72.

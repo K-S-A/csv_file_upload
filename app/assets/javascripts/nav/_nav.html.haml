@@ -1,0 +1,12 @@
+.navbar{data: {ng_controller: "NavCtrl as vm"}}
+  %ul.nav.navbar-nav
+    %li
+      %a{href: "#/"} Home
+    %li{data: {ng_hide: "vm.signedIn()"}}
+      %a{href: "#/login"} Log In
+    %li{data: {ng_hide: "vm.signedIn()"}}
+      %a{href: "#/register"} Register
+    %li{data: {ng_show: "vm.signedIn()"}}
+      %a{href: "#/", data: {ng_click: "vm.logout()"}} Log Out
+    %li{data: {ng: {show: "vm.signedIn()"}}}
+      %a{href: "#/"} Logged in as: "{{ vm.user.first_name }} {{vm.user.last_name}}"

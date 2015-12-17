@@ -9,7 +9,10 @@
 /public
 /log
 
+*~
+*.log
 # Ignore all logfiles and tempfiles.
 /log/*
 !/log/.keep
+/vendor/assets/bower_components/
 /tmp
