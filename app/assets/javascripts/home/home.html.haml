@@ -1,18 +1,29 @@
 .container-fluid
+  .page-header
+    %h1
+      Upload CSV files
+      %br
+      %small
+        (uncheck "Header" if .csv file contains pure data
+        %br
+        and click "Browse..." button or drag-n-drop for target file)
   %ng-csv-import{content: "csv.content", header: "csv.header", separator: "csv.separator",
     'header-visible': "csv.headerVisible", 'separator-visible': "csv.separatorVisible",
         encoding: "csv.encoding", 'encoding-visible': "csv.encodingVisible", result: "csv.result"}
   .btn-group.btn-group-justified{data: {ng: {show: 'csv.content'}}}
     .btn.btn-lg.btn-success{data: {ng: {hide: 'vm.checkVisible()', click: 'vm.analyzeCsv()'}}} Analyze CSV file
-    .btn.btn-lg.btn-info{data: {ng: {show: 'vm.checkVisible()', click: 'vm.analyzeCsv()'}}} Refresh
+    .btn.btn-lg.btn-info{data: {ng: {show: 'vm.checkVisible()', click: 'vm.analyzeCsv()'}}} Refresh Preview
     .btn.btn-lg.btn-success{data: {ng: {show: 'vm.checkVisible()', click: 'vm.analyzeCsv()'}}} Upload File
-  %table.table.table-condensed{data: {ng: {show: 'vm.checkVisible()'}}}
-    %caption Data Preview
-    %thead
-      %tr
-        %th.text-center FileName
-        %th.text-center{data: {ng: {repeat: 'header in vm.headers'}}} {{header}}
-    %tbody
-      %tr.text-center{data: {ng: {repeat: 'row in vm.data'}}}
-        %td.text-center {{vm.file.name}}
-        %td.text-center{data: {ng: {repeat: 'column in row'}}} {{column}}
+  .table-responsive
+    %table.table.table-condensed.table-hover{data: {ng: {show: 'vm.checkVisible()'}}}
+      %caption Data Preview (preloaded: {{vm.data.length}} rows; dropped due to possible errors: {{vm.file.errors}} rows)
+      %thead
+        %tr
+          %th #
+          %th FileName
+          %th.text-capitalize{data: {ng: {repeat: 'header in vm.headers'}}} {{::header}}
+      %tbody
+        %tr.success{data: {ng: {repeat: 'row in vm.data'}}}
+          %td {{$index + 1}}
+          %td {{::vm.file.name}}
+          %td{data: {ng: {repeat: 'column in row'}}} {{::column}}

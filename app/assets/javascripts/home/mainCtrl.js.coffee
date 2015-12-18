@@ -16,6 +16,7 @@ angular.module('csvTestApp').controller 'MainCtrl', [
     vm.analyzeCsv = ->
       mainFactory.setData()
       mainFactory.setFile()
+      mainFactory.findErrors()
 
     vm.checkVisible = ->
       mainFactory.checkFile()
