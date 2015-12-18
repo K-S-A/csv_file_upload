@@ -6,6 +6,7 @@ angular.module('csvTestApp', [
   'templates'
   'underscore'
   'Devise'
+  'ngCsvImport'
 ]).config [
   '$stateProvider'
   '$urlRouterProvider'
@@ -14,7 +15,7 @@ angular.module('csvTestApp', [
       .state('home',
         url: '/'
         templateUrl: 'home/home.html'
-        controller: 'MainCtrl')
+        controller: 'MainCtrl as vm')
       .state('login',
         url: '/login'
         templateUrl: 'auth/_login.html'

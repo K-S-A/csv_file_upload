@@ -1,7 +1,18 @@
-%p Home
-%p Home
-%p Home
-%p Home
-%p Home
-%p Home
-%p Home
+.container-fluid
+  %ng-csv-import{content: "csv.content", header: "csv.header", separator: "csv.separator",
+    'header-visible': "csv.headerVisible", 'separator-visible': "csv.separatorVisible",
+        encoding: "csv.encoding", 'encoding-visible': "csv.encodingVisible", result: "csv.result"}
+  .btn-group.btn-group-justified{data: {ng: {show: 'csv.content'}}}
+    .btn.btn-lg.btn-success{data: {ng: {hide: 'vm.checkVisible()', click: 'vm.analyzeCsv()'}}} Analyze CSV file
+    .btn.btn-lg.btn-info{data: {ng: {show: 'vm.checkVisible()', click: 'vm.analyzeCsv()'}}} Refresh
+    .btn.btn-lg.btn-success{data: {ng: {show: 'vm.checkVisible()', click: 'vm.analyzeCsv()'}}} Upload File
+  %table.table.table-condensed{data: {ng: {show: 'vm.checkVisible()'}}}
+    %caption Data Preview
+    %thead
+      %tr
+        %th.text-center FileName
+        %th.text-center{data: {ng: {repeat: 'header in vm.headers'}}} {{header}}
+    %tbody
+      %tr.text-center{data: {ng: {repeat: 'row in vm.data'}}}
+        %td.text-center {{vm.file.name}}
+        %td.text-center{data: {ng: {repeat: 'column in row'}}} {{column}}

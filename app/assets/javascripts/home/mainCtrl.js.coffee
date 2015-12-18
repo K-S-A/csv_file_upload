@@ -2,8 +2,23 @@
 
 angular.module('csvTestApp').controller 'MainCtrl', [
   '$scope'
-  ($scope) ->
+  '_'
+  'mainFactory'
+  '$log'
+  ($scope, _, mainFactory, $log) ->
     vm = this
+    vm.headers = mainFactory.headers
+    vm.data = mainFactory.data
+    vm.file = mainFactory.file
+
+    $scope.csv = mainFactory.csv
+
+    vm.analyzeCsv = ->
+      mainFactory.setData()
+      mainFactory.setFile()
+
+    vm.checkVisible = ->
+      mainFactory.checkFile()
 
     vm
 

@@ -1,0 +1,27 @@
+div>div>div.label {
+	display:inline-block;
+	width:30%;
+	text-align:left;
+	color:black;
+	font-size:30px
+}
+
+input[type=file]{
+  position: relative;
+  overflow: hidden;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 50px;
+  text-align: left;
+  filter: alpha(opacity=0);
+  outline: none;
+  cursor: inherit;
+  display: block;
+}
+
+input[type=checkbox] {
+  transform: scale(2);
+  -webkit-transform: scale(2);
+}

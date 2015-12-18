@@ -1,4 +1,6 @@
+//= require jquery
 //= require angular
+//= require angular-csv-import-tmp
 //= require AngularDevise
 //= require angular-rails-templates
 //= require angular-ui-router
