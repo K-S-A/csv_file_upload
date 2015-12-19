@@ -5,8 +5,7 @@ angular.module('csvTestApp').factory 'mainFactory', [
   '$http'
   '$filter'
   '$log'
-  'Auth'
-  (_, $http, $filter, $log, Auth) ->
+  (_, $http, $filter, $log) ->
     o =
       csv:
         content: null
@@ -25,9 +24,6 @@ angular.module('csvTestApp').factory 'mainFactory', [
         fullname: ''
         errors: 0
       message: false
-
-    Auth.currentUser().then((user) ->
-      o.id = user.id)
 
     o.setFile =->
       o.file.name = $filter('fileName')(o.csv.result.filename)
@@ -53,8 +49,7 @@ angular.module('csvTestApp').factory 'mainFactory', [
     o.createRows = ->
       rows = ''
       _.each(o.data, (row) ->
-        rows += "#{if rows.length then ', ' else ''}(#{o.id}, '#{o.file.name}', '#{row.join("', '")}')")
-      $log.log(rows)
+        rows += "#{if rows.length then ', ' else ''}('#{o.file.name}', '#{row.join("', '")}')")
       $http.post('/rows.json', {row: rows}).success ->
         o.data = []
 
