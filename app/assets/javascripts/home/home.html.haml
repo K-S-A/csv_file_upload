@@ -1,4 +1,8 @@
 .container-fluid
+  .alert.alert-success{data:{ng: {if: 'vm.message'}}}
+    %a.close{href: '#', 'aria-label': 'close', data: {dismiss: 'alert'}} &times;
+    %strong Finished!
+    Data from "{{vm.file.fullname}}" successfully added to DataBase.
   .page-header
     %h1
       Upload CSV files
@@ -13,7 +17,7 @@
   .btn-group.btn-group-justified{data: {ng: {show: 'csv.content'}}}
     .btn.btn-lg.btn-success{data: {ng: {hide: 'vm.checkVisible()', click: 'vm.analyzeCsv()'}}} Analyze CSV file
     .btn.btn-lg.btn-info{data: {ng: {show: 'vm.checkVisible()', click: 'vm.analyzeCsv()'}}} Refresh Preview
-    .btn.btn-lg.btn-success{data: {ng: {show: 'vm.checkVisible()', click: 'vm.analyzeCsv()'}}} Upload File
+    .btn.btn-lg.btn-success{data: {ng: {show: 'vm.checkVisible()', click: 'vm.createRows()'}}} Upload File
   .table-responsive
     %table.table.table-condensed.table-hover{data: {ng: {show: 'vm.checkVisible()'}}}
       %caption Data Preview (preloaded: {{vm.data.length}} rows; dropped due to possible errors: {{vm.file.errors}} rows)
